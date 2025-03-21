@@ -1,0 +1,13 @@
+{
+  "name": "rilo-landing",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "build:css": "tailwindcss -i ./input.css -o ./public/dist/styles.css --watch"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.17",
+    "postcss": "^8.4.35",
+    "tailwindcss": "^3.4.1"
+  }
+}
