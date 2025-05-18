@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "tailwindcss -i ./input.css -o ./public/dist/styles.css --watch",
     "build": "tailwindcss -i ./input.css -o ./public/dist/styles.css",
-    "start": "serve public"
+    "vercel-build": "npm run build"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.17",
