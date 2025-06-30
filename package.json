@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "tailwindcss -i ./input.css -o ./public/dist/styles.css --watch",
-    "build": "tailwindcss -i ./input.css -o ./public/dist/styles.css",
+    "dev": "tailwindcss -i ./src/input.css -o ./public/dist/styles.css --watch",
+    "build": "tailwindcss -i ./src/input.css -o ./public/dist/styles.css",
     "vercel-build": "npm install && npm run build",
     "build:css": "tailwindcss -i ./src/input.css -o ./public/dist/styles.css --watch"
   },
