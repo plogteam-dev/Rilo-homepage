@@ -6,12 +6,15 @@
     "dev": "tailwindcss -i ./src/input.css -o ./public/dist/styles.css --watch",
     "build": "tailwindcss -i ./src/input.css -o ./public/dist/styles.css",
     "vercel-build": "npm install && npm run build",
-    "build:css": "tailwindcss -i ./src/input.css -o ./public/dist/styles.css --watch"
+    "build:css": "tailwindcss -i ./src/input.css -o ./public/dist/styles.css --watch",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d public"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.17",
     "postcss": "^8.4.35",
-    "tailwindcss": "^3.4.1"
+    "tailwindcss": "^3.4.1",
+    "gh-pages": "^6.1.1"
   },
   "dependencies": {
     "serve": "^14.2.1"
