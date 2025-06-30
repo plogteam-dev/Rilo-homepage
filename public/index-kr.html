@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RILO - 위치 기반 소셜 앱</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="./dist/styles.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+        .language-selector {
+            position: fixed;
+            top: 24px;
+            right: 24px;
+            z-index: 1000;
+        }
+        .language-btn {
+            cursor: pointer;
+            user-select: none;
+        }
+        .language-btn.active {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+        .language-btn.inactive {
+            color: rgba(156, 163, 175, 0.8);
+        }
+        .language-btn.inactive:hover {
+            color: white;
+        }
+        .feature-image-container {
+            width: auto !important;
+            height: 80vh !important;
+            max-width: 600px !important;
+            max-height: 600px !important;
+            aspect-ratio: auto !important;
+        }
+        .feature-image {
+            width: auto !important;
+            height: 100% !important;
+            max-width: 100% !important;
+            max-height: 100% !important;
+            object-fit: contain !important;
+        }
+        @media (max-width: 768px) {
+            .feature-image-container {
+                width: 200px !important;
+                height: 200px !important;
+                max-width: 200px !important;
+                max-height: 200px !important;
+            }
+        }
+    </style>
+</head>
+<body class="bg-[#1F1F1F] text-white">
+    <!-- Hero Section -->
+    <section class="relative w-full min-h-screen flex items-center justify-center overflow-hidden bg-[#1F1F1F]">
+        <div class="absolute inset-0" style="background-image: url('./images/new_web_bg.png'); background-size: cover; background-position: center; background-repeat: no-repeat;"></div>
+        
+        <!-- Language Selector -->
+        <div class="language-selector">
+            <div class="flex bg-white/10 backdrop-blur-sm rounded-full p-1">
+                <button id="eng-btn" class="language-btn inactive px-4 py-2 rounded-full text-sm font-medium transition-all duration-300">
+                    ENG
+                </button>
+                <button id="kor-btn" class="language-btn active px-4 py-2 rounded-full text-sm font-medium transition-all duration-300">
+                    KOR
+                </button>
+            </div>
+        </div>
+        
+        <div class="relative z-20 text-center px-4">
+            <h1 class="text-5xl md:text-7xl font-bold mb-6">
+                <img src="./images/RILO_Logo_TYPO.png" alt="RILO" class="h-4 md:h-6 mx-auto" style="height:4rem;max-width:auto;">
+            </h1>
+            <p class="text-sm md:text-xl mb-8 text-gray-200 font-light">
+                순간을 기억하는 기록, RILO
+            </p>
+            <div class="flex justify-center" style="gap: 80px;">
+                <a href="#" class="bg-white/10 hover:bg-gray-800/20 text-white px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 hover:scale-110 hover:shadow-xl flex items-center">
+                    <svg class="w-5 h-5 mr-2" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.08 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 7.5c-.03-2.17 1.73-3.14 1.81-3.2.99-1.49 2.65-2.44 4.03-2.47.17 1.71-.47 3.46-1.5 4.59-.95 1.05-2.02 1.76-3.04 1.72-.15-1.15.45-2.35 1.7-3.64z"/>
+                    </svg>
+                    App Store 다운로드
+                </a>
+                <a href="#" class="bg-white/10 hover:bg-gray-800/20 text-white px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 hover:scale-110 hover:shadow-xl flex items-center">
+                    <svg class="w-5 h-5 mr-2" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M3 3v18l18-9z"/>
+                    </svg>
+                    Google Play 다운로드
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feature 1: Location-Based Discovery -->
+    <section class="py-8 px-4 bg-[#1F1F1F]" data-aos="fade-up">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+                <div class="flex flex-col items-start">
+                    <h2 class="text-4xl font-bold mb-4 text-white">
+                        하루를 쉽고 가볍게 기록하기
+                    </h2>
+                    <p class="text-lg text-gray-300 mb-6 font-extralight">
+                        하루의 여정을 한 눈에 담은 로그로<br>일상을 쉽고 가볍게 기록해 보세요.
+                    </p>
+                </div>
+                <div class="relative">
+                    <div class="feature-image-container flex items-center justify-center bg-[#222] rounded-lg overflow-hidden">
+                        <img src="/images/로그상세.png" alt="Discovery Feature" class="feature-image object-contain">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feature 2: Real-time Chat -->
+    <section class="py-8 px-4 bg-[#1F1F1F]" data-aos="fade-up">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+                <div class="order-2 md:order-1 relative">
+                    <div class="feature-image-container flex items-center justify-center bg-[#222] rounded-lg overflow-hidden">
+                        <img src="/images/스팟상세.png" alt="Chat Feature" class="feature-image object-contain">
+                    </div>
+                </div>
+                <div class="order-1 md:order-2 flex flex-col items-start">
+                    <h2 class="text-4xl font-bold mb-4 text-white">
+                        여행하듯 하루를 따라가기
+                    </h2>
+                    <p class="text-lg text-gray-300 mb-6 font-extralight">
+                        장소별로 묶인 사진을 스크롤하며<br>하루의 발자취를 따라가 보세요.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feature 3 & 4: Dump, Remember, Done! -->
+    <section class="py-8 px-4 bg-[#1F1F1F]" data-aos="fade-up">
+        <div class="max-w-6xl mx-auto">
+            <div class="space-y-24">
+                <!-- Row 1: Title + Text left, Image right -->
+                <div class="grid md:grid-cols-2 gap-8 items-center py-8">
+                    <div class="flex flex-col items-start">
+                        <h2 class="text-4xl font-bold mb-4 text-white">
+                            Dump, Remember, Done!
+                        </h2>
+                        <p class="text-lg text-gray-300 font-extralight">
+                            여러 장의 사진을 한 번에 덤프하고<br>간편하게 하루를 정리할 수 있어요.
+                        </p>
+                    </div>
+                    <div class="relative">
+                        <div class="feature-image-container flex items-center justify-center bg-[#222] rounded-lg overflow-hidden">
+                            <img src="/images/로그편집.png" alt="Dump Feature" class="feature-image object-contain">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Row 2: Image left, Text right -->
+                <div class="grid md:grid-cols-2 gap-8 items-center py-8">
+                    <div class="relative">
+                        <div class="feature-image-container flex items-center justify-center bg-[#222] rounded-lg overflow-hidden">
+                            <img src="/images/촬영화면.png" alt="Remember Feature" class="feature-image object-contain">
+                        </div>
+                    </div>
+                    <div class="flex items-center">
+                        <p class="text-lg text-gray-300 font-extralight">
+                            아무렇게나 찍은 사진도, 길가에서의 사소한 순간도<br>놓치지 않고 기록할 수 있어요.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-20 px-4 bg-[#1F1F1F]" data-aos="fade-up">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-4xl font-bold mb-6 text-white">
+                지금 시작해 볼까요?
+            </h2>
+            <p class="text-xl text-gray-300 mb-8">
+                RILO와 함께 하루를 쉽고 가볍게 남겨보세요.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-8">
+                <a href="#" class="bg-white/10 hover:bg-gray-800/20 text-white px-10 py-4 text-lg font-light rounded-full border border-white/30 transition-all duration-300 hover:scale-110 hover:shadow-xl flex items-center justify-center">
+                    <svg class="w-6 h-6 mr-2" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.08 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 7.5c-.03-2.17 1.73-3.14 1.81-3.2.99-1.49 2.65-2.44 4.03-2.47.17 1.71-.47 3.46-1.5 4.59-.95 1.05-2.02 1.76-3.04 1.72-.15-1.15.45-2.35 1.7-3.64z"/>
+                    </svg>
+                    App Store 다운로드
+                </a>
+                <a href="#" class="bg-white/10 hover:bg-gray-800/20 text-white px-10 py-4 text-lg font-light rounded-full border border-white/30 transition-all duration-300 hover:scale-110 hover:shadow-xl flex items-center justify-center">
+                    <svg class="w-6 h-6 mr-2" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M3 3v18l18-9z"/>
+                    </svg>
+                    Google Play 다운로드
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#1F1F1F] py-12 px-4 border-t border-purple-900/20">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4">
+                        <img src="./images/RILO_Logo_TYPO.png" alt="RILO" class="h-5">
+                    </h3>
+                    <p class="text-gray-400 mb-4">
+                        순간을 기억하는 기록
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="https://www.instagram.com/rilo_life?igsh=OHN0anZwdmJsZGty&utm_source=qr" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.012-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-8">
+                    <div>
+                        <h4 class="text-lg font-semibold mb-4">연락처</h4>
+                        <ul class="space-y-2 text-gray-400">
+                            <li><a href="mailto:hello@rilo.app" class="hover:text-white transition-colors">plogteam.dev@gmail.com</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-semibold mb-4">법적 고지</h4>
+                        <ul class="space-y-2 text-gray-400">
+                            <li><a href="https://www.rilo.life/terms-of-service.html" class="hover:text-white transition-colors">서비스 이용약관</a></li>
+                            <li><a href="https://www.rilo.life/privacy-policy.html" class="hover:text-white transition-colors">개인정보처리방침</a></li>
+                            <li><a href="https://www.rilo.life/location-terms.html" class="hover:text-white transition-colors">위치기반서비스 이용약관</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-12 pt-8 border-t border-gray-800 text-center text-gray-400">
+                <p>&copy; 2025 RILO. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: false
+        });
+
+        // Language selector functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const engBtn = document.getElementById('eng-btn');
+            const korBtn = document.getElementById('kor-btn');
+
+            // Set initial state (current page is Korean)
+            korBtn.classList.add('active');
+            engBtn.classList.add('inactive');
+
+            // Korean button click
+            korBtn.addEventListener('click', function() {
+                // Already on Korean page, just update visual state
+                korBtn.classList.remove('inactive');
+                korBtn.classList.add('active');
+                engBtn.classList.remove('active');
+                engBtn.classList.add('inactive');
+            });
+
+            // English button click
+            engBtn.addEventListener('click', function() {
+                // Navigate to English page
+                window.location.href = 'index.html';
+            });
+        });
+    </script>
+</body>
+</html> 
