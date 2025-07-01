@@ -282,10 +282,13 @@
 
             // Korean button click
             korBtn.addEventListener('click', function() {
-                // Navigate to Korean page
-                window.location.href = 'index-kr.html?t=' + new Date().getTime();
+                window.location.href = '/kr';
             });
         });
+
+        if (navigator.language.startsWith('ko') && !window.location.pathname.startsWith('/kr')) {
+            window.location.replace('/kr');
+        }
     </script>
 </body>
 </html> 
