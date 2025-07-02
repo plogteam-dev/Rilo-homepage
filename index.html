@@ -109,12 +109,12 @@
                 background-image: url('/images/new_mobile_bg.png') !important;
                 background-size: contain !important;
                 background-repeat: no-repeat !important;
-                background-position: center top !important;
+                background-position: top center !important;
                 width: 100vw !important;
                 left: 0 !important;
                 right: 0 !important;
-                top: 20px !important;
-                background-color: #1F1F1F !important;
+                top: 0 !important;
+                background-color: transparent !important;
             }
             .mobile-download {
                 position: absolute;
@@ -169,15 +169,10 @@
                 margin-top: -51px !important;
             }
             .scroll-arrow-container {
-                position: absolute;
-                left: 50%;
-                transform: translateX(-50%);
-                z-index: 30;
-                width: 100vw;
-                display: flex;
-                justify-content: center;
-                pointer-events: none;
-                bottom: 70px !important;
+                left: 50% !important;
+                transform: translateX(-50%) !important;
+                position: absolute !important;
+                bottom: 110px !important;
             }
             .scroll-arrow {
                 width: 30px;
@@ -194,10 +189,73 @@
             .cta-btn-row {
                 gap: 16px !important;
             }
+            .footer-email-br {
+                display: inline;
+            }
+            .feature3-row1 .feature3-text {
+                margin-bottom: 24px !important;
+            }
+            .feature3-row2 .feature3-img {
+                margin-bottom: 24px !important;
+            }
         }
         @media (min-width: 769px) {
             .mobile-download {
                 display: none !important;
+            }
+            .scroll-arrow-container {
+                display: none !important;
+            }
+            .feature-row-mobile {
+                flex-direction: row !important;
+                text-align: left !important;
+                align-items: center !important;
+            }
+            .feature-row-mobile .flex-col {
+                align-items: flex-start !important;
+            }
+            .feature-row-mobile .feature-image-container {
+                margin: 0 !important;
+            }
+            .footer-email-br {
+                display: none;
+            }
+            .feature3-row1, .feature3-row2 {
+                display: flex !important;
+                flex-direction: row !important;
+                align-items: center !important;
+                gap: 2rem !important;
+                text-align: left !important;
+            }
+            .feature3-row1 .feature3-text {
+                width: 50%;
+                order: 1;
+                align-items: flex-start !important;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+            .feature3-row1 .feature3-img {
+                width: 50%;
+                order: 2;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .feature3-row2 .feature3-img {
+                width: 50%;
+                order: 1;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .feature3-row2 .feature3-text {
+                width: 50%;
+                order: 2;
+                align-items: flex-start !important;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
             }
         }
     </style>
@@ -301,33 +359,27 @@
     <section class="py-8 px-4 bg-[#1F1F1F]" data-aos="fade-up">
         <div class="max-w-6xl mx-auto">
             <div class="space-y-12">
-                <!-- Row 1: Title + Text1 -->
-                <div class="grid md:grid-cols-2 gap-8 items-center feature-row-mobile feature-gap">
-                    <div class="flex flex-col items-center w-full">
+                <!-- Row 1: 텍스트(좌) + 이미지(우) -->
+                <div class="feature3-row1">
+                    <div class="feature3-text">
                         <h2 class="feature-title text-4xl font-bold mb-4 text-white">Dump, Remember, Done!</h2>
                         <p class="feature-desc text-lg text-gray-300 font-extralight">Dump multiple photos at once and<br>easily organize your day.</p>
                     </div>
-                </div>
-                <!-- Row 2: 사진1 -->
-                <div class="grid md:grid-cols-2 gap-8 items-center feature-row-mobile feature-gap">
-                    <div class="relative mx-auto">
+                    <div class="feature3-img">
                         <div class="feature-image-container flex items-center justify-center rounded-lg">
                             <img src="/images/feature-log-edit.png" alt="Dump Feature" class="feature-image object-contain">
                         </div>
                     </div>
                 </div>
-                <!-- Row 3: 본문2 -->
-                <div class="grid md:grid-cols-2 gap-8 items-center feature-row-mobile feature-gap">
-                    <div class="flex items-center w-full justify-center">
-                        <p class="feature-desc text-lg text-gray-300 font-extralight">Don't miss any moment - from random photos<br>to small moments on the street.</p>
-                    </div>
-                </div>
-                <!-- Row 4: 사진2 -->
-                <div class="grid md:grid-cols-2 gap-8 items-center feature-row-mobile feature-gap">
-                    <div class="relative mx-auto">
+                <!-- Row 2: 이미지(좌) + 텍스트(우) -->
+                <div class="feature3-row2">
+                    <div class="feature3-img">
                         <div class="feature-image-container flex items-center justify-center rounded-lg">
                             <img src="/images/feature-camera-view.png" alt="Remember Feature" class="feature-image object-contain">
                         </div>
+                    </div>
+                    <div class="feature3-text">
+                        <p class="feature-desc text-lg text-gray-300 font-extralight">Don't miss any moment - from random photos<br>to small moments on the street.</p>
                     </div>
                 </div>
             </div>
@@ -390,7 +442,7 @@
                         <ul class="space-y-2 text-gray-400">
                             <li style="word-break: break-all;">
                                 <a href="mailto:hello@rilo.app" class="hover:text-white transition-colors">
-                                    plogteam.dev<br>@gmail.com
+                                    plogteam.dev<span class="footer-email-br"><br></span>@gmail.com
                                 </a>
                             </li>
                         </ul>
