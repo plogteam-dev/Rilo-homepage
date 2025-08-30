@@ -31,18 +31,17 @@
 세 번째 탭인 '피드'가 릴리즈 되었어요.
 
 피드에서는 다른 사람들의 로그를 볼 수 있게 되었고,
-이제부터 내가 올리는 로그 또한 기본적으로 다른 사람들에게 공개가 될
-예정이에요.
-(지금까지 업로드 하신 로그는 모두 비공개처리 되었어요.)
+이제부터 내가 올리는 로그 또한 기본적으로 다른 사람들에게 공개가 될 예정이에요.
+(지금까지 업로드 하신 로그는 모두 비공개처리 되었어요)
 
-'팔로우/언팔로우', 그리고 '친구 공개'와 같은 공개 범위 설정 기능도
-열심히 준비 중이에요.
+'팔로우/언팔로우', 그리고 '친구 공개'와 같은 공개 범위 설정 기능도 열심히 준비 중이에요.
 빠른 시일 내에 추가될 예정이니, 조금만 기다려주세요.
 
-피드에서는 나와 비슷한 라이프스타일을 가진 사람들을 발견하고, 새로운
- 시선으로 장소를 만나는 즐거움을 느낄 수 있어요. 장소들이 연결된
-나의 하루가 누군가에게 영감이 되고, 또 누군가의 하루가 여러분께 작은
- 설렘이 되길 바라며, 그 순간들을 연결해드리는 RILO가 되겠습니다.
+피드에서는 나와 비슷한 라이프스타일을 가진 사람들을 발견하고, 새로운 시선으로 장소를 만나는 즐거움을 느낄 수 있어요. 
+
+장소들이 연결된 나의 하루가 누군가에게 영감이 되고, 또 누군가의 하루가 여러분께 작은 설렘이 되길 바라며, 
+
+그 순간들을 연결해드리는 RILO가 되겠습니다.
 
 RILO 팀 드림</p>
 
@@ -54,6 +53,19 @@ RILO 팀 드림</p>
             <p>&copy; 2025 RILO. All rights reserved.</p>
         </div>
     </footer>
+    <script>
+        (function() {
+            try {
+                var params = new URLSearchParams(window.location.search);
+                if (params.get('webview') === '1') {
+                    var style = document.createElement('style');
+                    style.type = 'text/css';
+                    style.innerHTML = 'html, body, main, section { background-color: #2B2B2B !important; } main > h1:first-of-type, footer { display: none !important; }';
+                    document.head.appendChild(style);
+                }
+            } catch (e) {}
+        })();
+    </script>
 </body>
 </html>
 
