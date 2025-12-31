@@ -1,0 +1,11 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "Seung Kyum Kim.com.rilo.ios",
+        "paths": [ "/profile/*" ]
+      }
+    ]
+  }
+}
