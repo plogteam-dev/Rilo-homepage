@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>RILO</title>
+    <style>
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        margin: 0;
+        padding: 24px;
+        background: #0b0b0b;
+        color: #ffffff;
+      }
+      .card {
+        max-width: 560px;
+        margin: 0 auto;
+        padding: 20px;
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.06);
+      }
+      .title { font-size: 20px; font-weight: 700; margin: 0 0 8px; }
+      .sub { opacity: 0.8; margin: 0 0 16px; line-height: 1.4; }
+      .btn {
+        display: inline-block;
+        padding: 12px 16px;
+        border-radius: 12px;
+        background: #ffffff;
+        color: #0b0b0b;
+        text-decoration: none;
+        font-weight: 700;
+      }
+      .muted { opacity: 0.6; margin-top: 12px; font-size: 13px; }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <p class="title" id="title">RILO로 이동 중…</p>
+      <p class="sub" id="subtitle">앱이 설치되어 있으면 자동으로 앱에서 열려요.</p>
+      <a class="btn" id="storeLink" href="https://apps.apple.com/kr/app/rilo/id6748411212">App Store에서 RILO 받기</a>
+      <p class="muted" id="debug"></p>
+    </div>
+
+    <script>
+      (function () {
+        // Only handle /profile/{userId} paths here.
+        // GitHub Pages has no rewrites, so unknown routes land on 404.html.
+        var path = window.location.pathname || "";
+        var isProfile = path.indexOf("/profile/") === 0;
+
+        if (!isProfile) {
+          // Not a profile deep link path; go back to home (or keep your existing 404 UX).
+          window.location.replace("/");
+          return;
+        }
+
+        var userId = path.replace("/profile/", "").split("/")[0] || "";
+        var storeURL = "https://apps.apple.com/kr/app/rilo/id6748411212";
+
+        // Optional: show basic context
+        var title = document.getElementById("title");
+        var subtitle = document.getElementById("subtitle");
+        var debug = document.getElementById("debug");
+
+        title.textContent = "RILO 프로필";
+        subtitle.textContent = "앱이 설치되어 있으면 앱에서 바로 열려요. 설치되어 있지 않다면 App Store로 이동할 수 있어요.";
+        debug.textContent = userId ? ("프로필 ID: " + userId) : "";
+
+        // If the app is NOT installed, this page is shown and we should send them to the App Store.
+        // If the app IS installed and Universal Links is configured correctly, iOS opens the app
+        // before this page loads, so this timeout won't run for those users.
+        setTimeout(function () {
+          window.location.href = storeURL;
+        }, 200);
+      })();
+    </script>
+  </body>
+</html>
