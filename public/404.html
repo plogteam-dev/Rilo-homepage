@@ -46,8 +46,9 @@
         var path = window.location.pathname || "";
         var isProfile = path.indexOf("/profile/") === 0;
         var isLog = path.indexOf("/log/") === 0;
+        var isSpot = path.indexOf("/spot/") === 0;
 
-        if (!isProfile && !isLog) {
+        if (!isProfile && !isLog && !isSpot) {
           window.location.replace("/");
           return;
         }
@@ -70,6 +71,11 @@
           customSchemeURL = "rilo://log/" + itemId;
           title.textContent = "RILO 로그";
           debug.textContent = itemId ? ("로그 ID: " + itemId) : "";
+        } else if (isSpot) {
+          itemId = path.replace("/spot/", "").split("/")[0] || "";
+          customSchemeURL = "rilo://spot/" + itemId;
+          title.textContent = "RILO 스팟";
+          debug.textContent = itemId ? ("스팟 ID: " + itemId) : "";
         }
 
         subtitle.textContent = "앱이 설치되어 있으면 앱에서 바로 열려요. 설치되어 있지 않다면 App Store로 이동할 수 있어요.";
