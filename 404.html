@@ -46,9 +46,19 @@
     <script>
       (function () {
         var path = window.location.pathname || "";
-        var isProfile = path.indexOf("/profile/") === 0;
-        var isLog = path.indexOf("/log/") === 0;
-        var isSpot = path.indexOf("/spot/") === 0;
+        // Normalize and parse path segments
+        // Examples:
+        // - "/profile/123"  -> ["profile","123"]
+        // - "/profile/"     -> ["profile"]
+        // - "/profile"      -> ["profile"]
+        // - "/"             -> []
+        var segments = path.split("/").filter(Boolean);
+        var section = segments[0] || "";
+        var itemId = segments[1] || "";
+
+        var isProfile = section === "profile";
+        var isLog = section === "log";
+        var isSpot = section === "spot";
 
         if (!isProfile && !isLog && !isSpot) {
           window.location.replace("/");
@@ -61,20 +71,35 @@
         var debug = document.getElementById("debug");
 
         var customSchemeURL = "";
-        var itemId = "";
+        var storeLink = document.getElementById("storeLink");
+        if (storeLink) storeLink.href = storeURL;
+
+        // If there's no ID, we can't deep-link to a specific resource.
+        // Guide the user to the App Store (with a visible fallback UI).
+        if (!itemId) {
+          title.textContent = "RILO 받기";
+          subtitle.textContent = "앱을 설치하면 이 링크를 열 수 있어요. App Store로 이동합니다…";
+          debug.textContent = "";
+
+          var cardNoId = document.getElementById("card");
+          if (cardNoId) cardNoId.classList.add("visible");
+
+          // Attempt to open the App Store directly (some in-app browsers may block redirects).
+          setTimeout(function () {
+            window.location.href = storeURL;
+          }, 300);
+          return;
+        }
 
         if (isProfile) {
-          itemId = path.replace("/profile/", "").split("/")[0] || "";
           customSchemeURL = "rilo://profile/" + itemId;
           title.textContent = "RILO 프로필";
           debug.textContent = itemId ? ("프로필 ID: " + itemId) : "";
         } else if (isLog) {
-          itemId = path.replace("/log/", "").split("/")[0] || "";
           customSchemeURL = "rilo://log/" + itemId;
           title.textContent = "RILO 로그";
           debug.textContent = itemId ? ("로그 ID: " + itemId) : "";
         } else if (isSpot) {
-          itemId = path.replace("/spot/", "").split("/")[0] || "";
           customSchemeURL = "rilo://spot/" + itemId;
           title.textContent = "RILO 스팟";
           debug.textContent = itemId ? ("스팟 ID: " + itemId) : "";
