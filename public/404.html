@@ -43,35 +43,46 @@
 
     <script>
       (function () {
-        // Only handle /profile/{userId} paths here.
-        // GitHub Pages has no rewrites, so unknown routes land on 404.html.
         var path = window.location.pathname || "";
         var isProfile = path.indexOf("/profile/") === 0;
+        var isLog = path.indexOf("/log/") === 0;
 
-        if (!isProfile) {
-          // Not a profile deep link path; go back to home (or keep your existing 404 UX).
+        if (!isProfile && !isLog) {
           window.location.replace("/");
           return;
         }
 
-        var userId = path.replace("/profile/", "").split("/")[0] || "";
         var storeURL = "https://apps.apple.com/kr/app/rilo/id6748411212";
-
-        // Optional: show basic context
         var title = document.getElementById("title");
         var subtitle = document.getElementById("subtitle");
         var debug = document.getElementById("debug");
 
-        title.textContent = "RILO 프로필";
-        subtitle.textContent = "앱이 설치되어 있으면 앱에서 바로 열려요. 설치되어 있지 않다면 App Store로 이동할 수 있어요.";
-        debug.textContent = userId ? ("프로필 ID: " + userId) : "";
+        var customSchemeURL = "";
+        var itemId = "";
 
-        // If the app is NOT installed, this page is shown and we should send them to the App Store.
-        // If the app IS installed and Universal Links is configured correctly, iOS opens the app
-        // before this page loads, so this timeout won't run for those users.
+        if (isProfile) {
+          itemId = path.replace("/profile/", "").split("/")[0] || "";
+          customSchemeURL = "rilo://profile/" + itemId;
+          title.textContent = "RILO 프로필";
+          debug.textContent = itemId ? ("프로필 ID: " + itemId) : "";
+        } else if (isLog) {
+          itemId = path.replace("/log/", "").split("/")[0] || "";
+          customSchemeURL = "rilo://log/" + itemId;
+          title.textContent = "RILO 로그";
+          debug.textContent = itemId ? ("로그 ID: " + itemId) : "";
+        }
+
+        subtitle.textContent = "앱이 설치되어 있으면 앱에서 바로 열려요. 설치되어 있지 않다면 App Store로 이동할 수 있어요.";
+
+        // Try Custom URL Scheme first (for in-app browsers like KakaoTalk)
+        if (customSchemeURL) {
+          window.location.href = customSchemeURL;
+        }
+
+        // Fallback to App Store if app doesn't open
         setTimeout(function () {
           window.location.href = storeURL;
-        }, 200);
+        }, 1500);
       })();
     </script>
   </body>

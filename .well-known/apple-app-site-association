@@ -4,11 +4,11 @@
     "details": [
       {
         "appID": "PGWKQ83F8X.com.rilo.ios",
-        "paths": ["/profile/*"]
+        "paths": ["/profile/*", "/log/*"]
       },
       {
         "appID": "PGWKQ83F8X.life.rilo.app.dev",
-        "paths": ["/profile/*"]
+        "paths": ["/profile/*", "/log/*"]
       }
     ]
   }
