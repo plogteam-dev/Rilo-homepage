@@ -31,10 +31,12 @@
         font-weight: 700;
       }
       .muted { opacity: 0.6; margin-top: 12px; font-size: 13px; }
+      .card { display: none; }
+      .card.visible { display: block; }
     </style>
   </head>
   <body>
-    <div class="card">
+    <div class="card" id="card">
       <p class="title" id="title">RILO로 이동 중…</p>
       <p class="sub" id="subtitle">앱이 설치되어 있으면 자동으로 앱에서 열려요.</p>
       <a class="btn" id="storeLink" href="https://apps.apple.com/kr/app/rilo/id6748411212">App Store에서 RILO 받기</a>
@@ -78,17 +80,32 @@
           debug.textContent = itemId ? ("스팟 ID: " + itemId) : "";
         }
 
-        subtitle.textContent = "앱이 설치되어 있으면 앱에서 바로 열려요. 설치되어 있지 않다면 App Store로 이동할 수 있어요.";
+        subtitle.textContent = "앱이 설치되어 있지 않다면 App Store에서 받을 수 있어요.";
+
+        var card = document.getElementById("card");
+        var appOpened = false;
+
+        // Detect if app opened (page loses visibility)
+        document.addEventListener("visibilitychange", function () {
+          if (document.hidden) {
+            appOpened = true;
+          }
+        });
+        window.addEventListener("blur", function () {
+          appOpened = true;
+        });
 
         // Try Custom URL Scheme first (for in-app browsers like KakaoTalk)
         if (customSchemeURL) {
           window.location.href = customSchemeURL;
         }
 
-        // Fallback to App Store if app doesn't open
+        // Show card if app doesn't open (don't auto-redirect)
         setTimeout(function () {
-          window.location.href = storeURL;
-        }, 1500);
+          if (!appOpened && !document.hidden) {
+            card.classList.add("visible");
+          }
+        }, 1000);
       })();
     </script>
   </body>
