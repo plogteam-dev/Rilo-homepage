@@ -5,7 +5,6 @@
   "scripts": {
     "dev": "tailwindcss -i ./src/input.css -o ./public/dist/styles.css --watch",
     "build": "tailwindcss -i ./src/input.css -o ./public/dist/styles.css",
-    "vercel-build": "npm install && npm run build",
     "build:css": "tailwindcss -i ./src/input.css -o ./public/dist/styles.css --watch",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d public --dotfiles"
