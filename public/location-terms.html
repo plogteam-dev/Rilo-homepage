@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="./dist/styles.css" rel="stylesheet">
     <style>
-        html { scroll-behavior: smooth; }
+        html { scroll-behavior: smooth; color-scheme: light dark; }
         .prose p { margin-bottom: 1.5em; }
         .prose h2 { margin-top: 2em; margin-bottom: 1em; font-size: 1.5em; font-weight: 700; }
         .prose h3 { margin-top: 1.5em; margin-bottom: 0.75em; font-size: 1.25em; font-weight: 700; }
@@ -20,15 +20,15 @@
         body {
             font-family: 'Poppins', sans-serif;
         }
-        .prose h1 { color: #fff !important; }
+        @media (prefers-color-scheme: light) { .site-logo { filter: invert(1); } }
     </style>
 </head>
-<body class="bg-[#1F1F1F] text-white min-h-screen flex flex-col" style="background-image: none !important;">
+<body class="bg-[#F8F8F8] dark:bg-[#161616] text-gray-900 dark:text-white min-h-screen flex flex-col" style="background-image: none !important;">
     <main class="flex-1 w-full max-w-6xl mx-auto py-12 px-4 flex flex-col items-start">
-        <a href="index.html" class="mb-6"><img src="images/RILO_Logo_TYPO.png" alt="RILO 로고" style="height: 3rem;" /></a>
-        <h1 class="text-4xl font-bold mb-6 text-white m-0">위치기반서비스 이용약관</h1>
-        <section class="bg-[#1F1F1F] text-white rounded-lg shadow-lg p-8">
-            <div class="prose max-w-none text-gray-200">
+        <a href="index.html" class="mb-6"><img class="site-logo" src="images/RILO_Logo_TYPO.png" alt="RILO 로고" style="height: 3rem;" /></a>
+        <h1 class="text-4xl font-bold mb-6 text-gray-900 dark:text-white m-0">위치기반서비스 이용약관</h1>
+        <section class="bg-[#F8F8F8] dark:bg-[#161616] text-gray-900 dark:text-white rounded-lg shadow-lg p-8">
+            <div class="prose max-w-none text-gray-700 dark:text-gray-200">
                 <h2>제 1 조 (목적)</h2>
                 <p>이 약관은 RILO(이하 "회사")가 제공하는 위치기반서비스(이하 "서비스")를 이용함에 있어 회사와 이용자의 권리, 의무 및 책임사항, 기타 필요한 사항을 규정함을 목적으로 합니다.</p>
 
@@ -73,7 +73,7 @@
                 <h2>제 6 조 (위치정보관리책임자의 지정)</h2>
                 <ol>
                     <li>회사는 위치정보를 적절하게 관리·보호하고, 개인위치정보주체의 불만을 원활하게 처리할 수 있도록 아래와 같이 위치정보관리책임자를 지정하고 있습니다.</li>
-                    <li>위치정보관리책임자의 정보는 <a href="/privacy-policy.html" class="text-purple-400 hover:text-purple-300">개인정보처리방침</a>에서 확인할 수 있습니다.</li>
+                    <li>위치정보관리책임자의 정보는 <a href="/privacy-policy.html" class="text-purple-600 hover:text-purple-700 dark:text-purple-400 dark:hover:text-purple-300">개인정보처리방침</a>에서 확인할 수 있습니다.</li>
                 </ol>
 
                 <h2>제 7 조 (손해배상)</h2>
@@ -99,8 +99,8 @@
             </div>
         </section>
     </main>
-    <footer class="py-8 px-4 bg-[#1F1F1F] border-t border-gray-800">
-        <div class="max-w-6xl mx-auto text-center text-gray-400">
+    <footer class="py-8 px-4 bg-[#F8F8F8] dark:bg-[#161616] border-t border-gray-300 dark:border-gray-800">
+        <div class="max-w-6xl mx-auto text-center text-gray-500 dark:text-gray-400">
             <p>&copy; 2025 RILO. All rights reserved.</p>
         </div>
     </footer>
