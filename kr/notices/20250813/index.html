@@ -62,7 +62,7 @@ RILO 팀 드림</p>
                 if (params.get('webview') === '1') {
                     var style = document.createElement('style');
                     style.type = 'text/css';
-                    style.innerHTML = 'main > h1:first-of-type, footer { display: none !important; }';
+                    style.innerHTML = 'main > h1:first-of-type, footer { display: none !important; } main { padding-top: 0.5rem !important; }';
                     document.head.appendChild(style);
                 }
             } catch (e) {}
