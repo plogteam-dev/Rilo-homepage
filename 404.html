@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ko">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -37,14 +37,59 @@
   </head>
   <body>
     <div class="card" id="card">
-      <p class="title" id="title">RILO로 이동 중…</p>
-      <p class="sub" id="subtitle">앱이 설치되어 있으면 자동으로 앱에서 열려요.</p>
-      <a class="btn" id="storeLink" href="https://apps.apple.com/kr/app/rilo/id6748411212">App Store에서 RILO 받기</a>
+      <p class="title" id="title">Opening RILO…</p>
+      <p class="sub" id="subtitle">If the app is installed, it opens automatically.</p>
+      <a class="btn" id="storeLink" href="https://apps.apple.com/app/id6748411212">Get RILO on the App Store</a>
       <p class="muted" id="debug"></p>
     </div>
 
     <script>
       (function () {
+        // Localized copy. English is the fallback for any unsupported language.
+        // Titles / idLabels are keyed by section (profile / log / spot).
+        var STRINGS = {
+          en: {
+            store: "Get RILO on the App Store",
+            noIdTitle: "Get RILO",
+            noIdSub: "Install the app to open this link. Redirecting to the App Store…",
+            deepLinkSub: "If you don't have the app, you can get it on the App Store.",
+            titles: { profile: "RILO Profile", log: "RILO Log", spot: "RILO Spot" },
+            idLabels: { profile: "Profile ID: ", log: "Log ID: ", spot: "Spot ID: " }
+          },
+          ko: {
+            store: "App Store에서 RILO 받기",
+            noIdTitle: "RILO 받기",
+            noIdSub: "앱을 설치하면 이 링크를 열 수 있어요. App Store로 이동합니다…",
+            deepLinkSub: "앱이 설치되어 있지 않다면 App Store에서 받을 수 있어요.",
+            titles: { profile: "RILO 프로필", log: "RILO 로그", spot: "RILO 스팟" },
+            idLabels: { profile: "프로필 ID: ", log: "로그 ID: ", spot: "스팟 ID: " }
+          },
+          ja: {
+            store: "App StoreでRILOを入手",
+            noIdTitle: "RILOを入手",
+            noIdSub: "アプリをインストールするとこのリンクを開けます。App Storeに移動します…",
+            deepLinkSub: "アプリがインストールされていない場合は App Store で入手できます。",
+            titles: { profile: "RILOプロフィール", log: "RILOログ", spot: "RILOスポット" },
+            idLabels: { profile: "プロフィールID: ", log: "ログID: ", spot: "スポットID: " }
+          }
+        };
+
+        // Pick a supported language from the browser, defaulting to English.
+        function resolveLang() {
+          var candidates = navigator.languages && navigator.languages.length
+            ? navigator.languages
+            : [navigator.language || "en"];
+          for (var i = 0; i < candidates.length; i++) {
+            var code = (candidates[i] || "").slice(0, 2).toLowerCase();
+            if (STRINGS[code]) return code;
+          }
+          return "en";
+        }
+
+        var lang = resolveLang();
+        var t = STRINGS[lang];
+        document.documentElement.setAttribute("lang", lang);
+
         var path = window.location.pathname || "";
         // Normalize and parse path segments
         // Examples:
@@ -65,20 +110,24 @@
           return;
         }
 
-        var storeURL = "https://apps.apple.com/kr/app/rilo/id6748411212";
+        // Region-neutral App Store link: Apple redirects to the user's storefront.
+        var storeURL = "https://apps.apple.com/app/id6748411212";
         var title = document.getElementById("title");
         var subtitle = document.getElementById("subtitle");
         var debug = document.getElementById("debug");
 
         var customSchemeURL = "";
         var storeLink = document.getElementById("storeLink");
-        if (storeLink) storeLink.href = storeURL;
+        if (storeLink) {
+          storeLink.href = storeURL;
+          storeLink.textContent = t.store;
+        }
 
         // If there's no ID, we can't deep-link to a specific resource.
         // Guide the user to the App Store (with a visible fallback UI).
         if (!itemId) {
-          title.textContent = "RILO 받기";
-          subtitle.textContent = "앱을 설치하면 이 링크를 열 수 있어요. App Store로 이동합니다…";
+          title.textContent = t.noIdTitle;
+          subtitle.textContent = t.noIdSub;
           debug.textContent = "";
 
           var cardNoId = document.getElementById("card");
@@ -91,21 +140,11 @@
           return;
         }
 
-        if (isProfile) {
-          customSchemeURL = "rilo://profile/" + itemId;
-          title.textContent = "RILO 프로필";
-          debug.textContent = itemId ? ("프로필 ID: " + itemId) : "";
-        } else if (isLog) {
-          customSchemeURL = "rilo://log/" + itemId;
-          title.textContent = "RILO 로그";
-          debug.textContent = itemId ? ("로그 ID: " + itemId) : "";
-        } else if (isSpot) {
-          customSchemeURL = "rilo://spot/" + itemId;
-          title.textContent = "RILO 스팟";
-          debug.textContent = itemId ? ("스팟 ID: " + itemId) : "";
-        }
+        customSchemeURL = "rilo://" + section + "/" + itemId;
+        title.textContent = t.titles[section];
+        debug.textContent = itemId ? (t.idLabels[section] + itemId) : "";
 
-        subtitle.textContent = "앱이 설치되어 있지 않다면 App Store에서 받을 수 있어요.";
+        subtitle.textContent = t.deepLinkSub;
 
         var card = document.getElementById("card");
         var appOpened = false;
