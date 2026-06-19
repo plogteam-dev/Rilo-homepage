@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="RILO 공지사항 - '지도 탭'이 오픈되었어요.">
+    <title>공지사항 - '지도 탭'이 오픈되었어요.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="../../../dist/styles.css" rel="stylesheet">
+    <style>
+        html { scroll-behavior: smooth; color-scheme: light dark; }
+        .prose p { margin-bottom: 1.25em; white-space: pre-line; }
+        .prose h2 { margin-top: 1.25em; margin-bottom: 0.5em; font-size: 1.5em; font-weight: 700; }
+        .prose time { color: #6B7280; font-size: 0.9em; }
+        @media (prefers-color-scheme: dark) {
+            .prose time { color: #9CA3AF; }
+        }
+        body { font-family: 'Poppins', sans-serif; }
+    </style>
+
+    <meta name="robots" content="noindex">
+</head>
+<body class="bg-[#F8F8F8] dark:bg-[#161616] text-gray-900 dark:text-white min-h-screen flex flex-col" style="background-image: none !important;">
+    <main class="flex-1 w-full max-w-6xl mx-auto py-12 px-4 flex flex-col items-start">
+        <h1 class="text-4xl font-bold mb-6 text-gray-900 dark:text-white m-0">'지도 탭'이 오픈되었어요.</h1>
+
+        <section class="bg-[#F8F8F8] dark:bg-[#161616] text-gray-900 dark:text-white rounded-lg p-8 w-full">
+            <div class="prose max-w-none text-gray-700 dark:text-gray-200">
+                <p>지도 탭에서는 다른 사람들이 남긴 장소들과 내가 기록한 장소들을 지도 위에서 한눈에 둘러볼 수 있어요.
+
+'모든 장소'와 '내 기록'을 오가며
+지금 이 지역에는 어떤 장소들이 쌓여 있는지, 또 나의 하루는 어떤 동선으로 이어졌는지 살펴볼 수 있어요.
+
+참고로 버디 공개로 설정한 로그는
+지도에서도 나와 버디를 맺은 사람에게만 보여져요.
+
+하루의 기록을 장소를 중심으로 다시 만나보며,
+익숙한 동네도 여행지의 순간도 조금 더 특별하게 돌아볼 수 있기를 바라요.
+
+장소들이 연결된 나의 하루가 더 오래 기억되고,
+그 순간들을 자연스럽게 이어드리는 RILO가 되겠습니다.
+
+RILO 팀 드림</p>
+
+            </div>
+        </section>
+    </main>
+    <footer class="py-8 px-4 bg-[#F8F8F8] dark:bg-[#161616] border-t border-gray-300 dark:border-gray-800">
+        <div class="max-w-6xl mx-auto text-center text-gray-500 dark:text-gray-400">
+            <p>&copy; 2025 RILO. All rights reserved.</p>
+        </div>
+    </footer>
+    <script>
+        (function() {
+            try {
+                var params = new URLSearchParams(window.location.search);
+                if (params.get('webview') === '1') {
+                    var style = document.createElement('style');
+                    style.type = 'text/css';
+                    style.innerHTML = 'main > h1:first-of-type, footer { display: none !important; } main { padding-top: 0.5rem !important; }';
+                    document.head.appendChild(style);
+                }
+            } catch (e) {}
+        })();
+    </script>
+</body>
+</html>
