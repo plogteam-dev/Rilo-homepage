@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "life.rilo.android",
+      "sha256_cert_fingerprints": [
+        "1A:31:77:11:49:8D:66:03:49:F0:F6:CF:09:8D:ED:44:C7:87:CF:8D:C6:62:C4:78:A7:C5:DC:A6:C2:3E:84:3D"
+      ]
+    }
+  }
+]
