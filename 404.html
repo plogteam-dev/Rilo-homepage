@@ -39,7 +39,7 @@
     <div class="card" id="card">
       <p class="title" id="title">Opening RILO…</p>
       <p class="sub" id="subtitle">If the app is installed, it opens automatically.</p>
-      <a class="btn" id="storeLink" href="https://apps.apple.com/app/id6748411212">Get RILO on the App Store</a>
+      <a class="btn" id="storeLink" href="https://apps.apple.com/app/id6748411212">Get RILO</a>
       <p class="muted" id="debug"></p>
     </div>
 
@@ -49,26 +49,35 @@
         // Titles / idLabels are keyed by section (profile / log / spot).
         var STRINGS = {
           en: {
-            store: "Get RILO on the App Store",
+            storeApple: "Get RILO on the App Store",
+            storeGoogle: "Get RILO on Google Play",
             noIdTitle: "Get RILO",
-            noIdSub: "Install the app to open this link. Redirecting to the App Store…",
-            deepLinkSub: "If you don't have the app, you can get it on the App Store.",
+            noIdSubApple: "Install the app to open this link. Redirecting to the App Store…",
+            noIdSubGoogle: "Install the app to open this link. Redirecting to Google Play…",
+            deepLinkSubApple: "If you don't have the app, you can get it on the App Store.",
+            deepLinkSubGoogle: "If you don't have the app, you can get it on Google Play.",
             titles: { profile: "RILO Profile", log: "RILO Log", spot: "RILO Spot" },
             idLabels: { profile: "Profile ID: ", log: "Log ID: ", spot: "Spot ID: " }
           },
           ko: {
-            store: "App Store에서 RILO 받기",
+            storeApple: "App Store에서 RILO 받기",
+            storeGoogle: "Google Play에서 RILO 받기",
             noIdTitle: "RILO 받기",
-            noIdSub: "앱을 설치하면 이 링크를 열 수 있어요. App Store로 이동합니다…",
-            deepLinkSub: "앱이 설치되어 있지 않다면 App Store에서 받을 수 있어요.",
+            noIdSubApple: "앱을 설치하면 이 링크를 열 수 있어요. App Store로 이동합니다…",
+            noIdSubGoogle: "앱을 설치하면 이 링크를 열 수 있어요. Google Play로 이동합니다…",
+            deepLinkSubApple: "앱이 설치되어 있지 않다면 App Store에서 받을 수 있어요.",
+            deepLinkSubGoogle: "앱이 설치되어 있지 않다면 Google Play에서 받을 수 있어요.",
             titles: { profile: "RILO 프로필", log: "RILO 로그", spot: "RILO 스팟" },
             idLabels: { profile: "프로필 ID: ", log: "로그 ID: ", spot: "스팟 ID: " }
           },
           ja: {
-            store: "App StoreでRILOを入手",
+            storeApple: "App StoreでRILOを入手",
+            storeGoogle: "Google PlayでRILOを入手",
             noIdTitle: "RILOを入手",
-            noIdSub: "アプリをインストールするとこのリンクを開けます。App Storeに移動します…",
-            deepLinkSub: "アプリがインストールされていない場合は App Store で入手できます。",
+            noIdSubApple: "アプリをインストールするとこのリンクを開けます。App Storeに移動します…",
+            noIdSubGoogle: "アプリをインストールするとこのリンクを開けます。Google Playに移動します…",
+            deepLinkSubApple: "アプリがインストールされていない場合は App Store で入手できます。",
+            deepLinkSubGoogle: "アプリがインストールされていない場合は Google Play で入手できます。",
             titles: { profile: "RILOプロフィール", log: "RILOログ", spot: "RILOスポット" },
             idLabels: { profile: "プロフィールID: ", log: "ログID: ", spot: "スポットID: " }
           }
@@ -110,8 +119,18 @@
           return;
         }
 
-        // Region-neutral App Store link: Apple redirects to the user's storefront.
-        var storeURL = "https://apps.apple.com/app/id6748411212";
+        // Platform detection. Android gets Google Play; everything else (iOS, desktop,
+        // unknown) gets the region-neutral App Store link, which Apple redirects to the
+        // user's storefront.
+        var ua = navigator.userAgent || "";
+        var isAndroid = /Android/i.test(ua);
+        var ANDROID_PACKAGE = "life.rilo.android";
+        var APP_STORE_URL = "https://apps.apple.com/app/id6748411212";
+        var PLAY_STORE_URL = "https://play.google.com/store/apps/details?id=" + ANDROID_PACKAGE;
+        var storeURL = isAndroid ? PLAY_STORE_URL : APP_STORE_URL;
+        var storeLabel = isAndroid ? t.storeGoogle : t.storeApple;
+        var noIdSub = isAndroid ? t.noIdSubGoogle : t.noIdSubApple;
+        var deepLinkSub = isAndroid ? t.deepLinkSubGoogle : t.deepLinkSubApple;
         var title = document.getElementById("title");
         var subtitle = document.getElementById("subtitle");
         var debug = document.getElementById("debug");
@@ -120,14 +139,14 @@
         var storeLink = document.getElementById("storeLink");
         if (storeLink) {
           storeLink.href = storeURL;
-          storeLink.textContent = t.store;
+          storeLink.textContent = storeLabel;
         }
 
         // If there's no ID, we can't deep-link to a specific resource.
         // Guide the user to the App Store (with a visible fallback UI).
         if (!itemId) {
           title.textContent = t.noIdTitle;
-          subtitle.textContent = t.noIdSub;
+          subtitle.textContent = noIdSub;
           debug.textContent = "";
 
           var cardNoId = document.getElementById("card");
@@ -140,11 +159,22 @@
           return;
         }
 
-        customSchemeURL = "rilo://" + section + "/" + itemId;
+        // iOS / in-app browsers (e.g. KakaoTalk) try the custom scheme directly.
+        // Android Chrome silently ignores unregistered schemes, so use the intent://
+        // form instead: it opens the app if installed and otherwise falls through
+        // to browser_fallback_url (Google Play) without an error page.
+        if (isAndroid) {
+          customSchemeURL =
+            "intent://" + section + "/" + itemId +
+            "#Intent;scheme=rilo;package=" + ANDROID_PACKAGE +
+            ";S.browser_fallback_url=" + encodeURIComponent(PLAY_STORE_URL) + ";end";
+        } else {
+          customSchemeURL = "rilo://" + section + "/" + itemId;
+        }
         title.textContent = t.titles[section];
         debug.textContent = itemId ? (t.idLabels[section] + itemId) : "";
 
-        subtitle.textContent = t.deepLinkSub;
+        subtitle.textContent = deepLinkSub;
 
         var card = document.getElementById("card");
         var appOpened = false;
