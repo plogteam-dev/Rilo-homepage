@@ -163,13 +163,17 @@
         // Android Chrome silently ignores unregistered schemes, so use the intent://
         // form instead: it opens the app if installed and otherwise falls through
         // to browser_fallback_url (Google Play) without an error page.
+        // The query rides along: it refines what to open on the same path
+        // (?open=music on a log, ?open=calendar&month= on a profile). On the
+        // intent form it has to sit before the #Intent fragment.
+        var query = window.location.search;
         if (isAndroid) {
           customSchemeURL =
-            "intent://" + section + "/" + itemId +
+            "intent://" + section + "/" + itemId + query +
             "#Intent;scheme=rilo;package=" + ANDROID_PACKAGE +
             ";S.browser_fallback_url=" + encodeURIComponent(PLAY_STORE_URL) + ";end";
         } else {
-          customSchemeURL = "rilo://" + section + "/" + itemId;
+          customSchemeURL = "rilo://" + section + "/" + itemId + query;
         }
         title.textContent = t.titles[section];
         debug.textContent = itemId ? (t.idLabels[section] + itemId) : "";
