@@ -153,16 +153,56 @@
             redirectingApple: "App Storeに移動しています...",
             redirectingGoogle: "Google Playに移動しています...",
             desktop: "iOSとAndroidで利用できます。"
+          },
+          "zh-Hans": {
+            description: "用照片轻松记录我的一天。<br />把日常的瞬间简单又美好地留下来。",
+            storeApple: "在 App Store 下载",
+            storeGoogle: "在 Google Play 下载",
+            redirectingApple: "正在前往 App Store...",
+            redirectingGoogle: "正在前往 Google Play...",
+            desktop: "支持 iOS 和 Android。"
+          },
+          "zh-Hant": {
+            description: "用照片輕鬆記錄我的一天。<br />把日常的瞬間簡單又美好地留下來。",
+            storeApple: "在 App Store 下載",
+            storeGoogle: "在 Google Play 下載",
+            redirectingApple: "正在前往 App Store...",
+            redirectingGoogle: "正在前往 Google Play...",
+            desktop: "支援 iOS 與 Android。"
+          },
+          vi: {
+            description: "Ghi lại một ngày của bạn bằng ảnh, thật dễ dàng.<br />Lưu giữ những khoảnh khắc thường ngày thật đẹp.",
+            storeApple: "Tải về trên App Store",
+            storeGoogle: "Tải về trên Google Play",
+            redirectingApple: "Đang chuyển đến App Store...",
+            redirectingGoogle: "Đang chuyển đến Google Play...",
+            desktop: "Có trên iOS và Android."
+          },
+          id: {
+            description: "Abadikan harimu dengan foto, mudah dan praktis.<br />Simpan momen sehari-hari dengan indah.",
+            storeApple: "Unduh di App Store",
+            storeGoogle: "Dapatkan di Google Play",
+            redirectingApple: "Mengalihkan ke App Store...",
+            redirectingGoogle: "Mengalihkan ke Google Play...",
+            desktop: "Tersedia di iOS dan Android."
           }
         };
 
         // Pick a supported language from the browser, defaulting to English.
+        // Chinese is resolved by script (Hant for TW/HK/MO), legacy "in" maps to Indonesian.
         function resolveLang() {
           var candidates = navigator.languages && navigator.languages.length
             ? navigator.languages
             : [navigator.language || "en"];
           for (var i = 0; i < candidates.length; i++) {
-            var code = (candidates[i] || "").slice(0, 2).toLowerCase();
+            var tag = (candidates[i] || "").toLowerCase().replace(/_/g, "-");
+            if (tag.slice(0, 2) === "zh") {
+              if (/(^|-)hans(-|$)/.test(tag)) return "zh-Hans";
+              if (/(^|-)hant(-|$)/.test(tag) || /-(tw|hk|mo)(-|$)/.test(tag)) return "zh-Hant";
+              return "zh-Hans";
+            }
+            if (tag === "in" || tag.slice(0, 3) === "in-") return "id";
+            var code = tag.slice(0, 2);
             if (STRINGS[code]) return code;
           }
           return "en";
