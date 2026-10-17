@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="RILO 公告 - 可以制作专属表情，还能直接编辑照片了。">
+    <title>公告 - 可以制作专属表情，还能直接编辑照片了。</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="../../../dist/styles.css" rel="stylesheet">
+    <style>
+        html { scroll-behavior: smooth; color-scheme: light dark; }
+        .prose p { margin-bottom: 1.25em; white-space: pre-line; }
+        .prose h2 { margin-top: 1.25em; margin-bottom: 0.5em; font-size: 1.5em; font-weight: 700; }
+        .prose time { color: #6B7280; font-size: 0.9em; }
+        @media (prefers-color-scheme: dark) {
+            .prose time { color: #9CA3AF; }
+        }
+        body { font-family: 'Poppins', sans-serif; }
+    </style>
+
+    <meta name="robots" content="noindex">
+</head>
+<body class="bg-[#F8F8F8] dark:bg-[#161616] text-gray-900 dark:text-white min-h-screen flex flex-col" style="background-image: none !important;">
+    <main class="flex-1 w-full max-w-6xl mx-auto py-12 px-4 flex flex-col items-start">
+        <h1 class="text-4xl font-bold mb-6 text-gray-900 dark:text-white m-0">可以制作专属表情，还能直接编辑照片了。</h1>
+
+        <section class="bg-[#F8F8F8] dark:bg-[#161616] text-gray-900 dark:text-white rounded-lg p-8 w-full">
+            <div class="prose max-w-none text-gray-700 dark:text-gray-200">
+                <p>本次更新为你介绍两项新功能。
+</p>
+
+                <h2>专属自定义表情</h2>
+                <p>现在只需一张照片就能制作专属于你的表情。
+选择照片后，背景会被自动去除，只需裁剪出想要的部分即可保存为表情。
+
+制作好的表情可以在回应日志和评论时直接使用。
+好友们也可以用你制作的表情一起回应，只有你们之间才懂的表达会一点点积累起来。
+
+另外，你制作的表情
+仅对与你结为好友的人显示。
+</p>
+
+                <h2>照片编辑</h2>
+                <p>现在制作日志时，可以直接在应用中编辑照片。
+可以随心裁剪和旋转，还能精细调节亮度、对比度、饱和度和色温。
+
+在正在编辑的日志中，也可以随时点击照片再次编辑。
+</p>
+
+                <p>希望记录你一天的照片能留存得更美，
+每一个回应都能承载你们独有的温度。
+RILO将让这些瞬间连接得更加有趣。
+
+RILO团队敬上</p>
+
+            </div>
+        </section>
+    </main>
+    <footer class="py-8 px-4 bg-[#F8F8F8] dark:bg-[#161616] border-t border-gray-300 dark:border-gray-800">
+        <div class="max-w-6xl mx-auto text-center text-gray-500 dark:text-gray-400">
+            <p>&copy; 2025 RILO. All rights reserved.</p>
+        </div>
+    </footer>
+    <script>
+        (function() {
+            try {
+                var params = new URLSearchParams(window.location.search);
+                if (params.get('webview') === '1') {
+                    var style = document.createElement('style');
+                    style.type = 'text/css';
+                    style.innerHTML = 'main > h1:first-of-type, footer { display: none !important; } main { padding-top: 0.5rem !important; }';
+                    document.head.appendChild(style);
+                }
+            } catch (e) {}
+        })();
+    </script>
+</body>
+</html>

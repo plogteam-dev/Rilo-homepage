@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="RILO 公告 - 现在可以翻译查看用其他语言写的记录了。">
+    <title>公告 - 现在可以翻译查看用其他语言写的记录了。</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="../../../dist/styles.css" rel="stylesheet">
+    <style>
+        html { scroll-behavior: smooth; color-scheme: light dark; }
+        .prose p { margin-bottom: 1.25em; white-space: pre-line; }
+        .prose h2 { margin-top: 1.25em; margin-bottom: 0.5em; font-size: 1.5em; font-weight: 700; }
+        .prose time { color: #6B7280; font-size: 0.9em; }
+        @media (prefers-color-scheme: dark) {
+            .prose time { color: #9CA3AF; }
+        }
+        body { font-family: 'Poppins', sans-serif; }
+    </style>
+
+    <meta name="robots" content="noindex">
+</head>
+<body class="bg-[#F8F8F8] dark:bg-[#161616] text-gray-900 dark:text-white min-h-screen flex flex-col" style="background-image: none !important;">
+    <main class="flex-1 w-full max-w-6xl mx-auto py-12 px-4 flex flex-col items-start">
+        <h1 class="text-4xl font-bold mb-6 text-gray-900 dark:text-white m-0">现在可以翻译查看用其他语言写的记录了。</h1>
+
+        <section class="bg-[#F8F8F8] dark:bg-[#161616] text-gray-900 dark:text-white rounded-lg p-8 w-full">
+            <div class="prose max-w-none text-gray-700 dark:text-gray-200">
+                <p>现在在RILO中，可以翻译查看用其他语言写的日志和评论了。
+
+用其他语言写的内容会显示「查看翻译」按钮。点击按钮即可查看翻译成你的语言的内容，点击「查看原文」即可回到原来的内容。
+
+如果在 设置 > 应用 > 自动翻译 中开启该功能，用其他语言写的内容无需每次点击，就会自动翻译后显示给你。
+
+今后我们也会持续改进，让你无论使用哪种语言都能更轻松地分享记录。
+
+RILO团队敬上</p>
+
+            </div>
+        </section>
+    </main>
+    <footer class="py-8 px-4 bg-[#F8F8F8] dark:bg-[#161616] border-t border-gray-300 dark:border-gray-800">
+        <div class="max-w-6xl mx-auto text-center text-gray-500 dark:text-gray-400">
+            <p>&copy; 2025 RILO. All rights reserved.</p>
+        </div>
+    </footer>
+    <script>
+        (function() {
+            try {
+                var params = new URLSearchParams(window.location.search);
+                if (params.get('webview') === '1') {
+                    var style = document.createElement('style');
+                    style.type = 'text/css';
+                    style.innerHTML = 'main > h1:first-of-type, footer { display: none !important; } main { padding-top: 0.5rem !important; }';
+                    document.head.appendChild(style);
+                }
+            } catch (e) {}
+        })();
+    </script>
+</body>
+</html>
