@@ -7,7 +7,7 @@
 
     <!-- OG Meta Tags -->
     <meta property="og:title" content="RILO - Remember It, Log It!" />
-    <meta property="og:description" content="사진으로 쉽고 편하게 기록하는 나의 하루. 지금 무료로 다운로드하세요." />
+    <meta property="og:description" content="Capture your day with photos, simply. 사진으로 쉽고 편하게 기록하는 나의 하루." />
     <meta property="og:image" content="https://www.rilo.life/images/RILO_Logo_TYPO.png" />
     <meta property="og:url" content="https://www.rilo.life/app" />
     <meta property="og:type" content="website" />
@@ -101,7 +101,7 @@
       <img src="/images/RILO_Logo_TYPO.png" alt="RILO" class="logo" />
       <p class="tagline">Remember It, Log It!</p>
 
-      <p class="description">
+      <p id="description" class="description">
         사진으로 쉽고 편하게 기록하는 나의 하루.<br />
         일상의 순간을 쉽고 예쁘게 남겨보세요.
       </p>
@@ -109,7 +109,7 @@
       <a
         id="storeBtn"
         class="store-btn"
-        href="https://apps.apple.com/kr/app/rilo/id6748411212"
+        href="https://apps.apple.com/app/id6748411212"
       >
         <svg id="storeIconApple" viewBox="0 0 24 24" fill="currentColor">
           <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.08 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
@@ -128,7 +128,52 @@
 
     <script>
       (function () {
-        var APP_STORE_URL = "https://apps.apple.com/kr/app/rilo/id6748411212";
+        // Localized copy. English is the fallback for any unsupported language.
+        var STRINGS = {
+          en: {
+            description: "Capture your day with photos, simply.<br />Keep everyday moments, beautifully.",
+            storeApple: "Download on the App Store",
+            storeGoogle: "Get it on Google Play",
+            redirectingApple: "Redirecting to the App Store...",
+            redirectingGoogle: "Redirecting to Google Play...",
+            desktop: "Available on iOS and Android."
+          },
+          ko: {
+            description: "사진으로 쉽고 편하게 기록하는 나의 하루.<br />일상의 순간을 쉽고 예쁘게 남겨보세요.",
+            storeApple: "App Store에서 다운로드",
+            storeGoogle: "Google Play에서 다운로드",
+            redirectingApple: "App Store로 이동 중...",
+            redirectingGoogle: "Google Play로 이동 중...",
+            desktop: "iOS와 Android에서 사용할 수 있습니다."
+          },
+          ja: {
+            description: "写真でかんたんに残す、わたしの一日。<br />日常の瞬間をきれいに記録しましょう。",
+            storeApple: "App Storeでダウンロード",
+            storeGoogle: "Google Playで手に入れよう",
+            redirectingApple: "App Storeに移動しています...",
+            redirectingGoogle: "Google Playに移動しています...",
+            desktop: "iOSとAndroidで利用できます。"
+          }
+        };
+
+        // Pick a supported language from the browser, defaulting to English.
+        function resolveLang() {
+          var candidates = navigator.languages && navigator.languages.length
+            ? navigator.languages
+            : [navigator.language || "en"];
+          for (var i = 0; i < candidates.length; i++) {
+            var code = (candidates[i] || "").slice(0, 2).toLowerCase();
+            if (STRINGS[code]) return code;
+          }
+          return "en";
+        }
+
+        var lang = resolveLang();
+        var t = STRINGS[lang];
+        document.documentElement.setAttribute("lang", lang);
+
+        // Region-neutral link: Apple redirects to the user's own storefront.
+        var APP_STORE_URL = "https://apps.apple.com/app/id6748411212";
         var PLAY_STORE_URL = "https://play.google.com/store/apps/details?id=life.rilo.android";
         var statusMsg = document.getElementById("statusMsg");
         var storeBtn = document.getElementById("storeBtn");
@@ -141,22 +186,25 @@
           (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
         var isAndroid = /Android/i.test(ua);
 
+        document.getElementById("description").innerHTML = t.description;
+        storeLabel.textContent = t.storeApple;
+
         if (isAndroid) {
           storeBtn.href = PLAY_STORE_URL;
-          storeLabel.textContent = "Google Play에서 다운로드";
+          storeLabel.textContent = t.storeGoogle;
           storeIconApple.style.display = "none";
           storeIconGoogle.style.display = "";
         }
 
         if (isIOS || isAndroid) {
-          statusMsg.textContent = isAndroid ? "Google Play로 이동 중..." : "App Store로 이동 중...";
+          statusMsg.textContent = isAndroid ? t.redirectingGoogle : t.redirectingApple;
           statusMsg.classList.add("redirecting");
 
           setTimeout(function () {
             window.location.href = isAndroid ? PLAY_STORE_URL : APP_STORE_URL;
           }, 1000);
         } else {
-          statusMsg.textContent = "iOS와 Android에서 사용할 수 있습니다.";
+          statusMsg.textContent = t.desktop;
         }
       })();
     </script>
