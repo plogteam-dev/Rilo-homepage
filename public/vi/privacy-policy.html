@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Chính sách quyền riêng tư RILO - Tìm hiểu cách xử lý thông tin cá nhân của dịch vụ mạng xã hội dựa trên vị trí.">
+    <title>Chính sách quyền riêng tư - RILO</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="/dist/styles.css" rel="stylesheet">
+    <style>
+        html { scroll-behavior: smooth; color-scheme: light dark; }
+        .prose p { margin-bottom: 1.5em; }
+        .prose h2 { margin-top: 2em; margin-bottom: 1em; font-size: 1.5em; font-weight: 700; }
+        .prose h3 { margin-top: 1.5em; margin-bottom: 0.75em; font-size: 1.25em; font-weight: 700; }
+        .prose ol, .prose ul { margin-bottom: 1.5em; }
+        .prose li { margin-bottom: 0.75em; }
+        .prose li:last-child { margin-bottom: 0; }
+        .prose > :first-child { margin-top: 0 !important; }
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-[#F8F8F8] dark:bg-[#161616] text-gray-900 dark:text-white min-h-screen flex flex-col" style="background-image: none !important;">
+    <main class="flex-1 w-full max-w-6xl mx-auto pt-2 pb-12 px-4 flex flex-col items-start">
+        <section class="bg-[#F8F8F8] dark:bg-[#161616] text-gray-900 dark:text-white rounded-lg shadow-lg p-8">
+            <div class="prose max-w-none text-gray-700 dark:text-gray-200">
+                <p class="text-sm text-gray-500 dark:text-gray-400"><em>Bản dịch này chỉ mang tính tham khảo. Nếu có sự khác biệt giữa bản dịch và bản gốc tiếng Hàn, bản gốc tiếng Hàn sẽ được ưu tiên áp dụng.</em></p>
+
+                <h2>Điều 1 (Quy định chung)</h2>
+                <ol>
+                    <li>Chính sách quyền riêng tư này giải thích cách thức xử lý thông tin cá nhân được thu thập trong quá trình sử dụng dịch vụ (sau đây gọi là "Dịch vụ") do RILO (sau đây gọi là "Công ty") cung cấp.</li>
+                    <li>Công ty trân trọng thông tin cá nhân của Người dùng và tuân thủ pháp luật có liên quan.</li>
+                    <li>Chính sách này có thể được thay đổi theo pháp luật có liên quan và chính sách dịch vụ, và các nội dung thay đổi sẽ được thông báo qua mục Thông báo.</li>
+                </ol>
+
+                <h2>Điều 2 (Thông tin cá nhân được thu thập và phương thức thu thập)</h2>
+                <ol>
+                    <li>Công ty có thể thu thập các thông tin cá nhân sau đây để cung cấp Dịch vụ.
+                        <ul>
+                            <li>Thông tin bắt buộc thu thập (khi đăng ký thành viên)
+                                <ul>
+                                    <li>Địa chỉ email (nhận từ nhà cung cấp đăng nhập mạng xã hội)</li>
+                                    <li>Biệt danh (do Người dùng trực tiếp nhập)</li>
+                                    <li>Mã định danh tài khoản đăng nhập mạng xã hội (loại nhà cung cấp và ID duy nhất phía nhà cung cấp)</li>
+                                </ul>
+                            </li>
+                            <li>Thông tin thu thập tự động
+                                <ul>
+                                    <li>Lịch sử sử dụng dịch vụ, thông tin thiết bị</li>
+                                </ul>
+                            </li>
+                            <li>Thông tin thu thập có điều kiện
+                                <ul>
+                                    <li>Giới tính và ngày sinh — chỉ được nhận và lưu trữ trong trường hợp Người dùng đăng ký bằng tài khoản Google hoặc Kakao và đã đồng ý cung cấp các thông tin này ở phía nhà cung cấp đó. (Không thu thập khi đăng nhập bằng Apple)</li>
+                                    <li>Hồ sơ đồng ý — việc đồng ý hay không đối với từng mục đồng ý, phiên bản điều khoản, khu vực áp dụng, quốc gia của storefront App Store và mã quốc gia được suy ra từ địa chỉ IP của yêu cầu đăng ký. Công ty không lưu trữ địa chỉ IP gốc mà chỉ lưu giữ mã quốc gia. Việc xác định quốc gia dựa trên IP sử dụng dữ liệu của DB-IP (IP geolocation by DB-IP, db-ip.com).</li>
+                                </ul>
+                            </li>
+                            <li>Thông tin thu thập tùy chọn (trường hợp Người dùng trực tiếp cung cấp)
+                                <ul>
+                                    <li>Ảnh và tag vị trí (khi Người dùng tải lên)</li>
+                                    <li>Thông tin hồ sơ khác do Người dùng thiết lập (ảnh hồ sơ, v.v., do Người dùng trực tiếp thiết lập sau khi đăng ký)</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>Công ty thu thập thông tin cá nhân theo phương thức Người dùng trực tiếp nhập trong quá trình đăng ký thành viên hoặc sử dụng Dịch vụ, hoặc theo phương thức nhận từ nhà cung cấp đăng nhập mạng xã hội (Google, Kakao, Apple).</li>
+                    <li>Trong quá trình sử dụng Dịch vụ, các thông tin như thông tin thiết bị, lịch sử truy cập có thể được thu thập tự động.</li>
+                </ol>
+
+                <h2>Điều 3 (Mục đích sử dụng thông tin cá nhân)</h2>
+                <ol>
+                    <li>Công ty sử dụng thông tin cá nhân đã thu thập cho các mục đích sau đây.
+                        <ol>
+                            <li>Cung cấp và vận hành Dịch vụ (tự động tạo log, chức năng check-in, v.v.)</li>
+                            <li>Quản lý tài khoản và hỗ trợ khách hàng</li>
+                            <li>Cải thiện Dịch vụ và đề xuất nội dung phù hợp với từng cá nhân</li>
+                            <li>Lưu giữ hồ sơ nhằm tuân thủ nghĩa vụ pháp lý</li>
+                        </ol>
+                    </li>
+                    <li>Công ty chỉ sử dụng thông tin cá nhân của Người dùng trong phạm vi pháp luật cho phép và không sử dụng cho các mục đích khác.</li>
+                    <li>Công ty có thể sử dụng thông tin cá nhân sau khi đã ẩn danh hóa nhằm cải thiện Dịch vụ và phân tích thống kê.</li>
+                </ol>
+
+                <h2>Điều 4 (Lưu giữ và xóa thông tin cá nhân)</h2>
+                <ol>
+                    <li>Công ty lưu giữ thông tin cá nhân trong phạm vi Người dùng đã đồng ý và chỉ lưu giữ trong thời hạn do pháp luật quy định.</li>
+                    <li>Người dùng có thể yêu cầu xóa tài khoản và xóa thông tin cá nhân bất cứ lúc nào, và yêu cầu sẽ được xử lý nhanh chóng sau khi được tiếp nhận.</li>
+                    <li>Một số dữ liệu có thể được duy trì trong một khoảng thời gian nhất định để vận hành Dịch vụ và tuân thủ nghĩa vụ pháp lý.</li>
+                </ol>
+
+                <h2>Điều 5 (Cung cấp thông tin cá nhân cho bên thứ ba và ủy thác xử lý)</h2>
+                <ol>
+                    <li>Công ty không cung cấp thông tin cá nhân cho bên thứ ba khi chưa có sự đồng ý của Người dùng.</li>
+                    <li>Tuy nhiên, trong trường hợp có yêu cầu của cơ quan điều tra, tòa án hoặc cơ quan nhà nước khác theo quy định của pháp luật, thông tin cá nhân có thể được cung cấp theo pháp luật có liên quan.</li>
+                    <li>Trong trường hợp cần thiết cho việc vận hành Dịch vụ, Công ty có thể ủy thác việc xử lý thông tin cá nhân cho bên ngoài và sẽ thực hiện các biện pháp để bên nhận ủy thác quản lý thông tin cá nhân một cách an toàn.</li>
+                </ol>
+
+                <h2>Điều 6 (Biện pháp bảo vệ thông tin cá nhân)</h2>
+                <ol>
+                    <li>Công ty áp dụng các biện pháp bảo mật sau đây để bảo vệ thông tin cá nhân của Người dùng.
+                        <ol>
+                            <li>Mã hóa dữ liệu và hạn chế truy cập</li>
+                            <li>Vận hành quy trình bảo mật nội bộ</li>
+                            <li>Áp dụng hệ thống bảo mật để ngăn chặn tấn công từ bên ngoài</li>
+                        </ol>
+                    </li>
+                    <li>Công ty hạn chế quyền truy cập thông tin cá nhân ở mức tối thiểu và tổ chức đào tạo nội bộ về bảo vệ thông tin cá nhân.</li>
+                    <li>Công ty thực hiện kiểm tra bảo mật định kỳ để ngăn chặn rò rỉ thông tin cá nhân của Người dùng.</li>
+                </ol>
+
+                <h2>Điều 7 (Quyền của Người dùng và phương thức thực hiện)</h2>
+                <ol>
+                    <li>Người dùng có thể yêu cầu xem, sửa đổi, xóa thông tin cá nhân bất cứ lúc nào.</li>
+                    <li>Người dùng có thể trực tiếp quản lý một số thông tin cá nhân thông qua cài đặt tài khoản, và yêu cầu xóa có thể được gửi qua trung tâm hỗ trợ khách hàng hoặc email.</li>
+                    <li>Người dùng có thể rút lại sự đồng ý đối với việc cung cấp thông tin cá nhân, và khi rút lại, việc sử dụng một số dịch vụ có thể bị hạn chế.</li>
+                </ol>
+
+                <h2>Điều 8 (Người chịu trách nhiệm bảo vệ thông tin cá nhân và đầu mối liên hệ)</h2>
+                <ol>
+                    <li>Công ty chỉ định Người chịu trách nhiệm bảo vệ thông tin cá nhân và Người chịu trách nhiệm quản lý thông tin vị trí nhằm bảo vệ thông tin cá nhân của Người dùng.</li>
+                    <li>Vai trò của người phụ trách là bảo vệ thông tin cá nhân và thông tin vị trí của Người dùng, xử lý các yêu cầu hỏi đáp và khiếu nại có liên quan.</li>
+                    <li>Thông tin về Người chịu trách nhiệm bảo vệ thông tin cá nhân và Người chịu trách nhiệm quản lý thông tin vị trí như sau.
+                        <ol>
+                            <li>Người phụ trách: Kim Seung-gyeom (Người chịu trách nhiệm bảo vệ thông tin cá nhân / Người chịu trách nhiệm quản lý thông tin vị trí)</li>
+                            <li>Email: plogteam.dev@gmail.com</li>
+                            <li>Đầu mối liên hệ: plogteam.dev@gmail.com</li>
+                        </ol>
+                    </li>
+                    <li>Tên, địa chỉ và người đại diện của doanh nghiệp như sau.
+                        <ol>
+                            <li>Tên doanh nghiệp: RILO</li>
+                            <li>Địa chỉ: 435 Olympic-ro, Songpa-gu, Seoul, Hàn Quốc</li>
+                            <li>Người đại diện: Kim Seung-gyeom</li>
+                        </ol>
+                    </li>
+                </ol>
+
+                <h2>Điều 9 (Chuyển thông tin cá nhân ra nước ngoài)</h2>
+                <ol>
+                    <li>Công ty là doanh nghiệp có trụ sở tại Đại Hàn Dân Quốc, và thông tin cá nhân của Người dùng có thể được lưu trữ và xử lý trên máy chủ đặt tại quốc gia khác ngoài quốc gia cư trú của Người dùng (bao gồm Đại Hàn Dân Quốc).</li>
+                    <li>Trong trường hợp xử lý thông tin cá nhân ở nước ngoài, Công ty sẽ tìm hiểu chế độ bảo vệ thông tin cá nhân của quốc gia đó và áp dụng các biện pháp bảo vệ được quy định trong Chính sách này.</li>
+                    <li>Trong trường hợp Công ty cung cấp thông tin cá nhân cho bên thứ ba ở nước ngoài, Công ty sẽ nhận được sự đồng ý trước của Người dùng, trừ trường hợp pháp luật cho phép.</li>
+                </ol>
+
+                <h2>Điều 10 (Thay đổi và thông báo Chính sách quyền riêng tư)</h2>
+                <ol>
+                    <li>Chính sách quyền riêng tư này có thể được thay đổi khi cần thiết, và trong trường hợp có thay đổi quan trọng, Công ty sẽ thông báo trước.</li>
+                    <li>Chính sách quyền riêng tư đã thay đổi sẽ được thông báo qua mục Thông báo trong Dịch vụ, và trong trường hợp có thay đổi ảnh hưởng nghiêm trọng đến quyền hoặc nghĩa vụ của Người dùng, Công ty có thể thông báo riêng qua email.</li>
+                    <li>Người dùng có thắc mắc liên quan đến bảo vệ thông tin cá nhân có thể liên hệ qua trung tâm hỗ trợ khách hàng.</li>
+                </ol>
+
+                <h2>Điều khoản bổ sung</h2>
+                <p>Điều 1. Chính sách quyền riêng tư này có hiệu lực từ ngày 1 tháng 8 năm 2025.</p>
+            </div>
+        </section>
+    </main>
+    <footer class="py-8 px-4 bg-[#F8F8F8] dark:bg-[#161616] border-t border-gray-300 dark:border-gray-800">
+        <div class="max-w-6xl mx-auto text-center text-gray-500 dark:text-gray-400">
+            <p>&copy; 2025 RILO. All rights reserved.</p>
+            <p class="text-sm mt-2"><a href="https://db-ip.com" class="hover:text-gray-700 dark:hover:text-gray-300">IP geolocation by DB-IP (db-ip.com)</a></p>
+        </div>
+    </footer>
+</body>
+</html>
