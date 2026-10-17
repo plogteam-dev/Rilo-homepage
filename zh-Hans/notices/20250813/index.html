@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="RILO 公告 - 「动态」标签页上线啦！">
+    <title>公告 - 「动态」标签页上线啦！</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="../../../dist/styles.css" rel="stylesheet">
+    <style>
+        html { scroll-behavior: smooth; color-scheme: light dark; }
+        .prose p { margin-bottom: 1.25em; white-space: pre-line; }
+        .prose h2 { margin-top: 1.25em; margin-bottom: 0.5em; font-size: 1.5em; font-weight: 700; }
+        .prose time { color: #6B7280; font-size: 0.9em; }
+        @media (prefers-color-scheme: dark) {
+            .prose time { color: #9CA3AF; }
+        }
+        body { font-family: 'Poppins', sans-serif; }
+    </style>
+
+    <meta name="robots" content="noindex">
+</head>
+<body class="bg-[#F8F8F8] dark:bg-[#161616] text-gray-900 dark:text-white min-h-screen flex flex-col" style="background-image: none !important;">
+    <main class="flex-1 w-full max-w-6xl mx-auto py-12 px-4 flex flex-col items-start">
+        <h1 class="text-4xl font-bold mb-6 text-gray-900 dark:text-white m-0">「动态」标签页上线啦！</h1>
+
+        <section class="bg-[#F8F8F8] dark:bg-[#161616] text-gray-900 dark:text-white rounded-lg p-8 w-full">
+            <div class="prose max-w-none text-gray-700 dark:text-gray-200">
+                <p>RILO第一次向你问好，很高兴认识你！
+
+第三个标签页「动态」已经发布了。
+
+在动态中可以看到其他人的日志，
+从现在起，你发布的日志也将默认向其他人公开。
+（你目前为止上传的日志均已设为非公开）
+
+「关注/取消关注」以及「好友可见」等公开范围设置功能也在努力准备中。
+很快就会上线，请再稍等一下。
+
+在动态中，你可以发现与自己生活方式相似的人，感受以全新视角邂逅地点的乐趣。
+
+希望由地点串联起来的你的一天能成为某个人的灵感，也希望某个人的一天能为你带来小小的心动，
+
+RILO将成为连接这些瞬间的桥梁。
+
+RILO团队敬上</p>
+
+            </div>
+        </section>
+    </main>
+    <footer class="py-8 px-4 bg-[#F8F8F8] dark:bg-[#161616] border-t border-gray-300 dark:border-gray-800">
+        <div class="max-w-6xl mx-auto text-center text-gray-500 dark:text-gray-400">
+            <p>&copy; 2025 RILO. All rights reserved.</p>
+        </div>
+    </footer>
+    <script>
+        (function() {
+            try {
+                var params = new URLSearchParams(window.location.search);
+                if (params.get('webview') === '1') {
+                    var style = document.createElement('style');
+                    style.type = 'text/css';
+                    style.innerHTML = 'main > h1:first-of-type, footer { display: none !important; } main { padding-top: 0.5rem !important; }';
+                    document.head.appendChild(style);
+                }
+            } catch (e) {}
+        })();
+    </script>
+</body>
+</html>

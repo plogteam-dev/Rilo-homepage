@@ -56,8 +56,8 @@
             noIdSubGoogle: "Install the app to open this link. Redirecting to Google Play…",
             deepLinkSubApple: "If you don't have the app, you can get it on the App Store.",
             deepLinkSubGoogle: "If you don't have the app, you can get it on Google Play.",
-            titles: { profile: "RILO Profile", log: "RILO Log", spot: "RILO Spot" },
-            idLabels: { profile: "Profile ID: ", log: "Log ID: ", spot: "Spot ID: " }
+            titles: { profile: "RILO Profile", log: "RILO Log", spot: "RILO Place" },
+            idLabels: { profile: "Profile ID: ", log: "Log ID: ", spot: "Place ID: " }
           },
           ko: {
             storeApple: "App Store에서 RILO 받기",
@@ -67,8 +67,8 @@
             noIdSubGoogle: "앱을 설치하면 이 링크를 열 수 있어요. Google Play로 이동합니다…",
             deepLinkSubApple: "앱이 설치되어 있지 않다면 App Store에서 받을 수 있어요.",
             deepLinkSubGoogle: "앱이 설치되어 있지 않다면 Google Play에서 받을 수 있어요.",
-            titles: { profile: "RILO 프로필", log: "RILO 로그", spot: "RILO 스팟" },
-            idLabels: { profile: "프로필 ID: ", log: "로그 ID: ", spot: "스팟 ID: " }
+            titles: { profile: "RILO 프로필", log: "RILO 로그", spot: "RILO 장소" },
+            idLabels: { profile: "프로필 ID: ", log: "로그 ID: ", spot: "장소 ID: " }
           },
           ja: {
             storeApple: "App StoreでRILOを入手",
@@ -78,18 +78,70 @@
             noIdSubGoogle: "アプリをインストールするとこのリンクを開けます。Google Playに移動します…",
             deepLinkSubApple: "アプリがインストールされていない場合は App Store で入手できます。",
             deepLinkSubGoogle: "アプリがインストールされていない場合は Google Play で入手できます。",
-            titles: { profile: "RILOプロフィール", log: "RILOログ", spot: "RILOスポット" },
-            idLabels: { profile: "プロフィールID: ", log: "ログID: ", spot: "スポットID: " }
+            titles: { profile: "RILOプロフィール", log: "RILOログ", spot: "RILO場所" },
+            idLabels: { profile: "プロフィールID: ", log: "ログID: ", spot: "場所ID: " }
+          },
+          "zh-Hans": {
+            storeApple: "在 App Store 获取 RILO",
+            storeGoogle: "在 Google Play 获取 RILO",
+            noIdTitle: "获取 RILO",
+            noIdSubApple: "安装 App 后即可打开此链接。正在前往 App Store…",
+            noIdSubGoogle: "安装 App 后即可打开此链接。正在前往 Google Play…",
+            deepLinkSubApple: "如果尚未安装 App，可以在 App Store 下载。",
+            deepLinkSubGoogle: "如果尚未安装 App，可以在 Google Play 下载。",
+            titles: { profile: "RILO 个人主页", log: "RILO 日志", spot: "RILO 地点" },
+            idLabels: { profile: "个人主页 ID：", log: "日志 ID：", spot: "地点 ID：" }
+          },
+          "zh-Hant": {
+            storeApple: "在 App Store 取得 RILO",
+            storeGoogle: "在 Google Play 取得 RILO",
+            noIdTitle: "取得 RILO",
+            noIdSubApple: "安裝 App 後即可開啟此連結。正在前往 App Store…",
+            noIdSubGoogle: "安裝 App 後即可開啟此連結。正在前往 Google Play…",
+            deepLinkSubApple: "如果尚未安裝 App，可以在 App Store 下載。",
+            deepLinkSubGoogle: "如果尚未安裝 App，可以在 Google Play 下載。",
+            titles: { profile: "RILO 個人檔案", log: "RILO 日誌", spot: "RILO 地點" },
+            idLabels: { profile: "個人檔案 ID：", log: "日誌 ID：", spot: "地點 ID：" }
+          },
+          vi: {
+            storeApple: "Tải RILO trên App Store",
+            storeGoogle: "Tải RILO trên Google Play",
+            noIdTitle: "Tải RILO",
+            noIdSubApple: "Hãy cài ứng dụng để mở liên kết này. Đang chuyển đến App Store…",
+            noIdSubGoogle: "Hãy cài ứng dụng để mở liên kết này. Đang chuyển đến Google Play…",
+            deepLinkSubApple: "Nếu bạn chưa có ứng dụng, bạn có thể tải trên App Store.",
+            deepLinkSubGoogle: "Nếu bạn chưa có ứng dụng, bạn có thể tải trên Google Play.",
+            titles: { profile: "Hồ sơ RILO", log: "Log RILO", spot: "Địa điểm RILO" },
+            idLabels: { profile: "ID hồ sơ: ", log: "ID log: ", spot: "ID địa điểm: " }
+          },
+          id: {
+            storeApple: "Dapatkan RILO di App Store",
+            storeGoogle: "Dapatkan RILO di Google Play",
+            noIdTitle: "Dapatkan RILO",
+            noIdSubApple: "Instal aplikasinya untuk membuka tautan ini. Mengalihkan ke App Store…",
+            noIdSubGoogle: "Instal aplikasinya untuk membuka tautan ini. Mengalihkan ke Google Play…",
+            deepLinkSubApple: "Kalau kamu belum punya aplikasinya, kamu bisa mengunduhnya di App Store.",
+            deepLinkSubGoogle: "Kalau kamu belum punya aplikasinya, kamu bisa mengunduhnya di Google Play.",
+            titles: { profile: "Profil RILO", log: "Log RILO", spot: "Tempat RILO" },
+            idLabels: { profile: "ID profil: ", log: "ID log: ", spot: "ID tempat: " }
           }
         };
 
         // Pick a supported language from the browser, defaulting to English.
+        // Chinese is resolved by script (Hant for TW/HK/MO), legacy "in" maps to Indonesian.
         function resolveLang() {
           var candidates = navigator.languages && navigator.languages.length
             ? navigator.languages
             : [navigator.language || "en"];
           for (var i = 0; i < candidates.length; i++) {
-            var code = (candidates[i] || "").slice(0, 2).toLowerCase();
+            var tag = (candidates[i] || "").toLowerCase().replace(/_/g, "-");
+            if (tag.slice(0, 2) === "zh") {
+              if (/(^|-)hans(-|$)/.test(tag)) return "zh-Hans";
+              if (/(^|-)hant(-|$)/.test(tag) || /-(tw|hk|mo)(-|$)/.test(tag)) return "zh-Hant";
+              return "zh-Hans";
+            }
+            if (tag === "in" || tag.slice(0, 3) === "in-") return "id";
+            var code = tag.slice(0, 2);
             if (STRINGS[code]) return code;
           }
           return "en";

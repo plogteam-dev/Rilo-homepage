@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Pengumuman RILO - Tab 'Feed' sudah hadir!">
+    <title>Pengumuman - Tab 'Feed' sudah hadir!</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="../../../dist/styles.css" rel="stylesheet">
+    <style>
+        html { scroll-behavior: smooth; color-scheme: light dark; }
+        .prose p { margin-bottom: 1.25em; white-space: pre-line; }
+        .prose h2 { margin-top: 1.25em; margin-bottom: 0.5em; font-size: 1.5em; font-weight: 700; }
+        .prose time { color: #6B7280; font-size: 0.9em; }
+        @media (prefers-color-scheme: dark) {
+            .prose time { color: #9CA3AF; }
+        }
+        body { font-family: 'Poppins', sans-serif; }
+    </style>
+
+    <meta name="robots" content="noindex">
+</head>
+<body class="bg-[#F8F8F8] dark:bg-[#161616] text-gray-900 dark:text-white min-h-screen flex flex-col" style="background-image: none !important;">
+    <main class="flex-1 w-full max-w-6xl mx-auto py-12 px-4 flex flex-col items-start">
+        <h1 class="text-4xl font-bold mb-6 text-gray-900 dark:text-white m-0">Tab 'Feed' sudah hadir!</h1>
+
+        <section class="bg-[#F8F8F8] dark:bg-[#161616] text-gray-900 dark:text-white rounded-lg p-8 w-full">
+            <div class="prose max-w-none text-gray-700 dark:text-gray-200">
+                <p>Halo, ini sapaan pertama dari RILO. Senang bertemu denganmu!
+
+Tab ketiga, 'Feed', sudah dirilis.
+
+Di Feed, kamu kini bisa melihat Log milik orang lain,
+dan mulai sekarang Log yang kamu unggah juga pada dasarnya akan terbuka untuk orang lain.
+(Semua Log yang sudah kamu unggah sampai saat ini telah diatur menjadi privat)
+
+Fitur pengaturan jangkauan publik seperti 'Ikuti/Berhenti mengikuti' dan 'Publik untuk teman' juga sedang kami siapkan dengan sungguh-sungguh.
+Fitur tersebut akan segera ditambahkan, jadi mohon tunggu sebentar lagi, ya.
+
+Di Feed, kamu bisa menemukan orang-orang dengan gaya hidup yang mirip denganmu dan merasakan serunya menjumpai tempat-tempat dari sudut pandang baru.
+
+Semoga hari-harimu yang terhubung lewat tempat-tempat itu menjadi inspirasi bagi seseorang, dan hari milik seseorang menjadi debaran kecil bagimu.
+
+RILO akan menjadi penghubung momen-momen tersebut.
+
+Salam hangat,
+Tim RILO</p>
+
+            </div>
+        </section>
+    </main>
+    <footer class="py-8 px-4 bg-[#F8F8F8] dark:bg-[#161616] border-t border-gray-300 dark:border-gray-800">
+        <div class="max-w-6xl mx-auto text-center text-gray-500 dark:text-gray-400">
+            <p>&copy; 2025 RILO. All rights reserved.</p>
+        </div>
+    </footer>
+    <script>
+        (function() {
+            try {
+                var params = new URLSearchParams(window.location.search);
+                if (params.get('webview') === '1') {
+                    var style = document.createElement('style');
+                    style.type = 'text/css';
+                    style.innerHTML = 'main > h1:first-of-type, footer { display: none !important; } main { padding-top: 0.5rem !important; }';
+                    document.head.appendChild(style);
+                }
+            } catch (e) {}
+        })();
+    </script>
+</body>
+</html>

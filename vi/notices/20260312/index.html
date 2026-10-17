@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Thông báo RILO - 'Tab Bản đồ' đã chính thức mở.">
+    <title>Thông báo - 'Tab Bản đồ' đã chính thức mở.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="../../../dist/styles.css" rel="stylesheet">
+    <style>
+        html { scroll-behavior: smooth; color-scheme: light dark; }
+        .prose p { margin-bottom: 1.25em; white-space: pre-line; }
+        .prose h2 { margin-top: 1.25em; margin-bottom: 0.5em; font-size: 1.5em; font-weight: 700; }
+        .prose time { color: #6B7280; font-size: 0.9em; }
+        @media (prefers-color-scheme: dark) {
+            .prose time { color: #9CA3AF; }
+        }
+        body { font-family: 'Poppins', sans-serif; }
+    </style>
+
+    <meta name="robots" content="noindex">
+</head>
+<body class="bg-[#F8F8F8] dark:bg-[#161616] text-gray-900 dark:text-white min-h-screen flex flex-col" style="background-image: none !important;">
+    <main class="flex-1 w-full max-w-6xl mx-auto py-12 px-4 flex flex-col items-start">
+        <h1 class="text-4xl font-bold mb-6 text-gray-900 dark:text-white m-0">'Tab Bản đồ' đã chính thức mở.</h1>
+
+        <section class="bg-[#F8F8F8] dark:bg-[#161616] text-gray-900 dark:text-white rounded-lg p-8 w-full">
+            <div class="prose max-w-none text-gray-700 dark:text-gray-200">
+                <p>Trong tab Bản đồ, bạn có thể xem tổng quan trên bản đồ những địa điểm mà người khác đã ghi lại và những địa điểm bạn đã ghi lại.
+
+Chuyển qua lại giữa 'Tất cả địa điểm' và 'Ghi chép của tôi'
+để xem khu vực này đang có những địa điểm nào, và một ngày của bạn đã đi qua những lộ trình nào.
+
+Lưu ý, log được đặt ở chế độ công khai với buddy
+thì trên bản đồ cũng chỉ hiển thị với những người đã kết buddy với bạn.
+
+Mong rằng khi gặp lại những ghi chép trong ngày qua lăng kính địa điểm,
+bạn có thể nhìn lại cả khu phố quen thuộc lẫn những khoảnh khắc ở nơi du lịch một cách đặc biệt hơn.
+
+RILO sẽ giúp một ngày được kết nối bởi các địa điểm của bạn được ghi nhớ lâu hơn,
+và tự nhiên nối tiếp những khoảnh khắc ấy.
+
+Đội ngũ RILO</p>
+            </div>
+        </section>
+    </main>
+    <footer class="py-8 px-4 bg-[#F8F8F8] dark:bg-[#161616] border-t border-gray-300 dark:border-gray-800">
+        <div class="max-w-6xl mx-auto text-center text-gray-500 dark:text-gray-400">
+            <p>&copy; 2025 RILO. All rights reserved.</p>
+        </div>
+    </footer>
+    <script>
+        (function() {
+            try {
+                var params = new URLSearchParams(window.location.search);
+                if (params.get('webview') === '1') {
+                    var style = document.createElement('style');
+                    style.type = 'text/css';
+                    style.innerHTML = 'main > h1:first-of-type, footer { display: none !important; } main { padding-top: 0.5rem !important; }';
+                    document.head.appendChild(style);
+                }
+            } catch (e) {}
+        })();
+    </script>
+</body>
+</html>

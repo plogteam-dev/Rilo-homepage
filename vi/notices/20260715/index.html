@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Thông báo RILO - Lưu những địa điểm bạn yêu thích và xem lại theo tag.">
+    <title>Thông báo - Lưu những địa điểm bạn yêu thích và xem lại theo tag.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="../../../dist/styles.css" rel="stylesheet">
+    <style>
+        html { scroll-behavior: smooth; color-scheme: light dark; }
+        .prose p { margin-bottom: 1.25em; white-space: pre-line; }
+        .prose h2 { margin-top: 1.25em; margin-bottom: 0.5em; font-size: 1.5em; font-weight: 700; }
+        .prose time { color: #6B7280; font-size: 0.9em; }
+        @media (prefers-color-scheme: dark) {
+            .prose time { color: #9CA3AF; }
+        }
+        body { font-family: 'Poppins', sans-serif; }
+    </style>
+
+    <meta name="robots" content="noindex">
+</head>
+<body class="bg-[#F8F8F8] dark:bg-[#161616] text-gray-900 dark:text-white min-h-screen flex flex-col" style="background-image: none !important;">
+    <main class="flex-1 w-full max-w-6xl mx-auto py-12 px-4 flex flex-col items-start">
+        <h1 class="text-4xl font-bold mb-6 text-gray-900 dark:text-white m-0">Lưu những địa điểm bạn yêu thích và xem lại theo tag.</h1>
+
+        <section class="bg-[#F8F8F8] dark:bg-[#161616] text-gray-900 dark:text-white rounded-lg p-8 w-full">
+            <div class="prose max-w-none text-gray-700 dark:text-gray-200">
+                <p>Giờ đây bạn có thể lưu các địa điểm trong log và mở lại bất cứ lúc nào.
+</p>
+
+                <h2>Lưu địa điểm</h2>
+                <p>Khi xem log và bắt gặp một địa điểm bạn thích, chỉ cần nhấn nút đánh dấu một lần là có thể lưu lại.
+Khi lưu, bạn có thể gắn các tag như 'quán ngon muốn thử', 'muốn ghé thăm' để phân loại theo tiêu chí của riêng mình.
+
+Lưu ý, các địa điểm đã lưu chỉ hiển thị với bạn.
+Người khác sẽ không nhận được thông báo và địa điểm cũng không được công khai.
+</p>
+
+                <h2>Xem lại các địa điểm đã lưu</h2>
+                <p>Trong tab Kỷ niệm, bạn có thể xem tổng quan các địa điểm đã lưu.
+Nhấn vào một tag để chỉ xem các địa điểm thuộc tag đó, và nhấn vào một địa điểm để xem cả log có chứa địa điểm ấy.
+</p>
+
+                <p>Dù là địa điểm tình cờ gặp hay nơi bạn mong một ngày được ghé thăm,
+hãy cất giữ từng chút một trên RILO và mở ra vào lúc cần.
+RILO sẽ nối tiếp bạn đến với một ngày tiếp theo.
+
+Đội ngũ RILO</p>
+            </div>
+        </section>
+    </main>
+    <footer class="py-8 px-4 bg-[#F8F8F8] dark:bg-[#161616] border-t border-gray-300 dark:border-gray-800">
+        <div class="max-w-6xl mx-auto text-center text-gray-500 dark:text-gray-400">
+            <p>&copy; 2025 RILO. All rights reserved.</p>
+        </div>
+    </footer>
+    <script>
+        (function() {
+            try {
+                var params = new URLSearchParams(window.location.search);
+                if (params.get('webview') === '1') {
+                    var style = document.createElement('style');
+                    style.type = 'text/css';
+                    style.innerHTML = 'main > h1:first-of-type, footer { display: none !important; } main { padding-top: 0.5rem !important; }';
+                    document.head.appendChild(style);
+                }
+            } catch (e) {}
+        })();
+    </script>
+</body>
+</html>
